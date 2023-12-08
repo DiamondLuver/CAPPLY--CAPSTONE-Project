@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			outline: 0;
+
+		}
+
+		body {
+			height: 100vh;
+			font-family: Arial, Helvetica, sans-serif;
+			display: grid;
+			min-height: 100vh;
+			width: 100%;
+			background: white;
+			align-items: center;
+		}
+
+		.container {
+			width: 80%;
+		}
+
+		h1 {
+			margin-bottom: 2rem;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 24rem;
+			gap: 1rem;
+		}
+
+		input,
+		textarea {
+			padding: 1.4rem;
+			background-color: transparent;
+			border: 1px solid black;
+		}
+
+		.container .content {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.container .content .left-side {
+			width: 40%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 15px;
+			position: relative;
+		}
+
+		.content .left-side::before {
+			content: '';
+			position: absolute;
+			height: 70%;
+			width: 2px;
+			right: -15px;
+			top: 50%;
+			transform: translateY(-50%);
+			background: #2B3764;
+		}
+
+		.content .left-side .details {
+			margin: 14px;
+			text-align: center;
+		}
+
+		.content .left-side .details .topic {
+			font-size: 18px;
+			font-weight: 500;
+		}
+
+		.content .left-side .details .text-one,
+		.content .left-side .details .text-two {
+			font-size: 14px;
+			color: #2B3764;
+		}
+
+		.container .content .right-side {
+			width: 60%;
+			margin-left: 75px;
+		}
+
+		.content .right-side .topic-text {
+			font-size: 23px;
+			font-weight: 600;
+			color: #2B3764;
+		}
+
+		.right-side .input-box {
+			height: 50px;
+			width: 100%;
+			margin: 12px 0;
+		}
+
+		.right-side .input-box textarea,
+		.right-side .input-box input {
+			height: 100%;
+			width: 100%;
+			border: none;
+			font-size: 16px;
+			font-weight: 500;
+			border-radius: 6px;
+			background: #f0f1f8;
+			padding: 0 15px;
+			resize: none;
+		}
+
+		.right-side message-box {
+			min-height: 110px;
+		}
+
+		.right-side button {
+			margin-top: 12px;
+			display: inline-block;
+		}
+
+		.right-side .button input[type="button"] {
+			color: #fff;
+			font-size: 18px;
+			outline: none;
+			border: none;
+			padding: 8px 16px;
+			background: #3e2093;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.button input[type=".button"]:hover {
+			background: #3e2093;
+		}
+
+		@media (max-width:952px) {
+			.container {
+				width: 80%;
+				padding: 35px 35px 40px 35px;
+			}
+		}
+
+		@media (max-width:820px) {
+			.container {
+				margin: 40px 0;
+				height: 100%;
+			}
+
+			.container .content {
+				flex-direction: column-reverse;
+			}
+
+			.container .content .left-side {
+				width: 100%;
+				flex-direction: row;
+				margin-top: 40px;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			.container .content .left-side::before {
+				display: none;
+			}
+
+			.container .content .right-side {
+				width: 100%;
+				margin-left: 0;
+			}
+		}
+	</style>
+	{% load static %}
+	<script src="{% static 'contact/contact.js' %}"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+	</script>
+	<script type="text/javascript">
+		(function () {
+			emailjs.init("IJ3BBB9ScOl_d77BA");
+		})();
+	</script>
+</head>
+
+<body>
+	<section class="section bg-primary">
+		<div class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 mx-auto">
+						<h1 class="mb-5  pt-5 text-white">Contact Us</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<hr>
+	<br>
+	<div class="container" style="box-shadow: 0px 5px 10px rgba(red, green, blue, alpha);">
+		<div class="content" style="color: #2B3764;">
+			<div class="left-side" style="background: #fff;">
+				<div class="address details">
+					<svg style="margin-bottom: 10px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+						fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+						<path
+							d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+					</svg>
+					<div class="topic">Address</div>
+					<div class="text-one">Surkhet,N12</div>
+					<div class="text-two">Birendragar 08</div>
+				</div>
+				<div class="phone details">
+					<svg style="margin-bottom: 10px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+						fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+						<path fill-rule="evenodd"
+							d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+					</svg>
+					<div class="topic">Phone</div>
+					<div class="text-one">+8851 2345 6789</div>
+					<div class="text-two">+8859 8765 4321</div>
+				</div>
+				<div style="margin-bottom: 10px;" class="email details">
+					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+						class="bi bi-envelope-fill" viewBox="0 0 16 16">
+						<path
+							d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+					</svg>
+					<div class="topic">Email</div>
+					<div class="text-one">capply.info@gmail.com</div>
+					<div class="text-two">info.capply@gmail.com</div>
+				</div>
+			</div>
+			<div class="right-side" style="background: #fff;">
+				<div>
+					<div class="topic-text">Sent us a message</div>
+				</div>
+
+				
+
+				<form class="contact_form" method="post">
+					{% csrf_token %}
+					<div class="input-box"><input type="text" class="form-control" id="name" placeholder="Full Name"
+							required>
+					</div>
+					<div class="input-box"><input type="email" class="form-control" id="email" placeholder="Email"
+							required>
+					</div>
+					<div class="input-box message-box"><textarea class="form-control" id="message"
+							placeholder="How can we help you?" required></textarea></div>
+					<button id="send"class="btn btn-primary" onclick="sendMail()" style="background-color: #ffca42;" value="Send Message"></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br>
+	<hr>
+	<section class="section">
+		<div class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 mx-auto">
+						<h3 class="mb-5  pt-5" style="color: #3e2093;">Frequent Question</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class=" row mt-5 ">
+					<div class="col-lg-3" style="width: 50%; color: #3e2093;">
+						<div>
+							<ul>
+								<li class="mb-2"><a href="#!">Do you offer discount for education?</a>
+								</li>
+								<li class="mb-2"><a href="#!">Is Hack Producivity book available on the one stores?</a>
+								</li>
+								<li class="mb-2"><a href="#!">What is Hack Productivity book about?</a>
+								</li>
+								<li class="mb-2"><a href="#!">where can I get Hack Productivity book?</a>
+								</li>
+								<li class="mb-2"><a href="#!">Do you offer discounts for education?</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width: 50%; color: #3e2093;">
+						<div class="">
+							<ul>
+								<li class="mb-2"><a href="#!">Do you offer discount for education?</a>
+								</li>
+								<li class="mb-2"><a href="#!">Is Hack Producivity book available on the one stores?</a>
+								</li>
+								<li class="mb-2"><a href="#!">What is Hack Productivity book about?</a>
+								</li>
+								<li class="mb-2"><a href="#!">where can I get Hack Productivity book?</a>
+								</li>
+								<li class="mb-2"><a href="#!">Do you offer discounts for education?</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+	</section>
+
+</body>
+<script>
+	function sendMail() {
+		var params = {
+			name: document.getElementById("name").value,
+			email: document.getElementById("email").value,
+			message: document.getElementById("message").value,
+		};
+
+		const serviceID = "service_eriihun";
+		const templateID = "template_683w4oi";
+
+		emailjs.send(serviceID, templateID, params)
+			.then(res => {
+				document.getElementById("name").value = "";
+				document.getElementById("email").value = "";
+				document.getElementById("message").value = "";
+				console.log(res);
+				alert("Your message sent successfully!!")
+
+			})
+			.catch(err => console.log(err));
+
+	}
+</script>
+
+</html>
+{% endblock content %}

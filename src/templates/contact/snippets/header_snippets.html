@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Capply - A capstone project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Scholarship">
+    <meta name="author" content="Capply">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/capply_icon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/capply_icon.png' %}" type="image/x-icon">
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <meta name="capply-name" content="capply" />
+
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Main Script -->
+
+    <!-- # Main Style Sheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% if request.path == about %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    {% endif %}
+    {% load static %}
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/contact.js' %}" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("IJ3BBB9ScOl_d77BA");
+        })();
+    </script>
+</head>
+
+<body id="top-header" class="bg-light">
+    <!-- navigation -->
+    <header class="navigation fixed-top">
+        <nav class="navbar navbar-expand-xl navbar-light text-center py-3">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    {% load static %}
+                    <img loading="prelaod" decoding="async" class="img-fluid" width="160"
+                        src="{% static 'images/logo.svg' %}" alt="capply">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'scholarship' %}">Schoarship</a>
+
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        <li class="nav-item ">
+                            <div class="form-group mx-3">
+                                <form class="d-flex" method="POST" action="{% url 'search' %}" id="search-form">
+                                    <input class="form-control" name="searched" type="text" placeholder="Search"
+                                        autocomplete="off">
+                                    {% csrf_token %}
+                                </form>
+                                <p class="info"></p>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <br>
+                    <br>
+                    {% if request.user.is_authenticated %}
+                    <!-- profile btn --><a href="{% url 'profile' %}" class="btn btn-outline-primary">My profile</a>
+                    <!-- logout btn --> <a href="{% url 'logout' %}" class="btn btn-primary">Log out</a>
+                    {% else %}
+                    <!-- account btn --> <a href="{% url 'login' %}" class="btn btn-outline-primary">Log In</a>
+                    <!-- account btn --> <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- /navigation -->

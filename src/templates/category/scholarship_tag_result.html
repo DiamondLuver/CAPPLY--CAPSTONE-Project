@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'category/snippets/tag_snippets.html' %}
+<section class="section-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-4">
+				<!-- category sidebar -->
+				{% include 'category/snippets/category_sidebar_snippets.html' %}
+				<!-- end category sidebar -->
+			</div>
+			<div class="col-lg-9 col-md-8">
+				<div class="product-grid-list">
+					<div class="row">
+						{% include 'category/snippets/scholarship_list_snippets.html' %}
+					</div>
+				</div>
+				{% include 'category/snippets/pagination_snippets.html' %}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock content %}

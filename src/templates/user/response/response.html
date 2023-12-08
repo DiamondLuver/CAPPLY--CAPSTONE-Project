@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <style>
+        .message-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .message-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .message-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+    </style>
+<section class="section vh-75 mt-5">
+    <div class="message-container  text-center">
+        <h4 class="message-title">{{message}}</h4>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-5">Back home</a>
+    </div>
+</section>
+{% endblock content %}

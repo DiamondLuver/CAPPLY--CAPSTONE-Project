@@ -1,0 +1,13 @@
+<div class="category-sidebar">
+    <div class="widget category-list">
+        <h4 class="widget-header">Level</h4>
+        <ul class="category-list ">
+
+            {% for level_tag in level_lists %}
+            <li><a href=" /scholarship/tag/level/{{level_tag}}">{{ level_tag }}<span>{{x }}</span></a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+</div>

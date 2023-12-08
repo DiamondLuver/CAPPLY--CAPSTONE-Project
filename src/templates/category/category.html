@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'category/snippets/tag_snippets.html' %}
+<section class="section-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-4">
+				<!-- category sidebar -->
+				{% include 'category/snippets/category_sidebar_snippets.html' %}
+				<!-- end category sidebar -->
+			</div>
+			<div class="col-lg-9 col-md-8">
+				<div class="product-grid-list">
+					<div class="row">
+						{% for scholarship in scholarships %}
+						<div class="ad-listing-list">
+							<!-- product card -->
+							<div class="product-item">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title"><a
+												href="{{ scholarship.get_absolute_url }}">{{scholarship.school}}</a>
+										</h4>
+										{% if scholarship.description != null %}
+										<p class="card-text"><strong>Description:</strong>
+											{{scholarship.description}}<br>
+											{% endif %}
+										<p class="card-text"><strong>Level:</strong> {{scholarship.level}}<br>
+											{% if scholarship.deadline != none %}
+											<strong>Close:</strong> {{scholarship.deadline}}<br>
+											{% endif %}
+											<strong>Country: </strong> {{scholarship.country}}<br>
+										</p>
+										<a href="{{ scholarship.get_absolute_url }}" id="read_more"
+											class="btn btn-primary">Read more</a>
+										<a href="{{scholarship.more_info}}" class="btn btn-secondary">Apply now</a>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="pagination justify-content-center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							{% if scholarships.has_previous %}
+							<li class="page-item"><a class="page-link" href="?page=1">&laquo 1</a></li>
+							<li class="page-item"><a class="page-link"
+									href="?page={{scholarships.previous_page_number}}"><strong>
+										< </strong></a></li>
+							{% endif %}
+							<li class="page-item active"><a class="page-link"
+									href="?page={{scholarships.paginator.num_pages}}">{{scholarships.number}}
+								</a></li>
+							{% if scholarships.has_next %}
+							<li class="page-item"><a class="page-link"
+									href="?page={{scholarships.next_page_number}}"><strong>
+										> </strong></a></li>
+							<li class="page-item"><a class="page-link"
+									href="?page={{scholarships.paginator.num_pages}}">{{scholarships.paginator.num_pages}}
+									&raquo</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock content %}

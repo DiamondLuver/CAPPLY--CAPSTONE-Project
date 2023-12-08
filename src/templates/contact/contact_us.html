@@ -1,0 +1,172 @@
+{% include 'contact/snippets/header_snippets.html' %}
+
+<section class="section mb-0 bg-primary">
+    <div class="text-center">
+        <div class="container mb-0">
+            <div class="row">
+                <!-- <div class="col-lg-9 mx-auto">
+                    <h1 class="pt-5 text-white">Got a question?</h1>
+                    <p>We'd love to talk about how we can help you.</p>
+                </div> -->
+                <div class="col-lg-12 mx-auto directory text-white">
+                    <h1 class="mb-5 pt-5 text-white">#Contact Us </h1>
+                    <ul class="list-inline breadcrumbs text-capitalize text-white" style="font-weight:500">
+                        <li class="list-inline-item "><a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="list-inline-item ">/ &nbsp; <a href="">Contact</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact-info">
+    <div class="container mt-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center text-primary">
+                <h2>Got a Question?</h2>
+                <p>We'd love to talk about how we can help you.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6 mt-2">
+                <div class="contact-info-block bg-white text-center shadow">
+                    <i class="pe-7 fa fa-map"></i>
+                    <h4>Address</h4>
+                    <p class="lead"> 2nd Bridge Prek Leap, National Road Number 6, Phnom Penh 12252</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6 mt-2">
+                <div class="contact-info-block bg-white text-center shadow">
+                    <i class="pe-7 fa fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p class="lead">chanmalyza.tann@student.cadt.edu.kh
+                        <br>
+                        info@capply.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6 mt-2">
+                <div class="contact-info-block bg-white text-center shadow">
+                    <i class="p-7 fa fa-phone"></i>
+                    <h4>Phone Number</h4>
+                    <p class="lead">+855 96-400-3848
+                        <br>+855 78-230-978
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="container bg-white shadow p-5 ">
+        <div class="row mb-4 ">
+            <div class="col-md-8 col-lg-6">
+                <h5>Leave a Message</h5>
+                <!-- Heading -->
+                <h2 class=" text-capitalize mb-2">
+                    Tell us about <span class="fw-normal">yourself</span>
+                </h2>
+
+                <!-- Subheading -->
+                <p class="mb-5 text-primary">
+                    Whether you have questions or you would just like to say hello, contact us.
+                </p>
+
+            </div>
+        </div> <!-- / .row -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- form message -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Your message was sent successfully.
+                        </div>
+                    </div>
+                </div>
+                <!-- end message -->
+                <!-- Contacts Form -->
+                <form class="contact_form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <!-- Input -->
+                        <div class="col-sm-6 mb-6">
+                            <div class="form-group">
+                                <h6 class="h6 small d-block text-uppercase">
+                                    Your name
+                                    <span class="text-danger">*</span>
+                                </h6>
+
+                                <div class="input-group">
+                                    <input class="form-control" name="name" id="name" required=""
+                                        placeholder="Deborah Doe" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Input -->
+
+                        <!-- Input -->
+                        <div class="col-sm-6 mb-6">
+                            <div class="form-group">
+                                <h6 class="h6 small d-block text-uppercase">
+                                    Your email address
+                                    <span class="text-danger">*</span>
+                                </h6>
+
+                                <div class="input-group ">
+                                    <input class="form-control" name="email" id="email" required=""
+                                        placeholder="deborah@gmail.com" type="email">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Input -->
+
+                        <div class="w-100"></div>
+                    </div>
+
+                    <!-- Input -->
+                    <div class="form-group mb-5 mt-5">
+                        <h6 class="h6 small d-block text-uppercase">
+                            How can we help you?
+                            <span class="text-danger">*</span>
+                        </h6>
+
+                        <div class="input-group">
+                            <textarea class="form-control" rows="4" name="message" id="message" required=""
+                                placeholder="Hi there, I would like to ..."></textarea>
+                        </div>
+                    </div>
+                    <!-- End Input -->
+
+                    <div class="">
+                        <input name="submit" type="submit" class="btn btn-primary" onclick="sendMail()"
+                            value="Send Message">
+                        <p class="small text-primary pt-3">We'll get back to you in 1-2 business days.</p>
+                    </div>
+                </form>
+                <!-- End Contacts Form -->
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <!-- START MAP -->
+                <div id="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.565359856303!2d104.90884797492127!3d11.654288988552981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953bad45e4ee1%3A0x6c33cb023d508017!2sCADT%20-%20Innovation%20Center!5e0!3m2!1sen!2skh!4v1685109363237!5m2!1sen!2skh"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <!-- END MAP -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'snippets/snippet_footer.html' %}
+</body>
+
+</html>

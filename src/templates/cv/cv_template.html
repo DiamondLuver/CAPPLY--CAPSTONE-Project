@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-heading {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+
+
+
+
+        .section-heading {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        .section-content {
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .section-content-top {
+            display: flex;
+            flex-direction: row;
+            margin-top: -40px;
+            padding: 0 10px 10px 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .image-container {
+            margin-left: 20px;
+            width: 140px;
+            height: 160px;
+
+            overflow: hidden;
+        }
+
+        .image-container img {
+            margin-top: 10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- <h1>Curriculum Vitae</h1> -->
+
+        <div class="section">
+            <!-- <div class="section-heading"> -->
+            <!-- <h2>Contact Information</h2> -->
+            <!-- </div> -->
+            <div class="section-content-top">
+                <div class="contact-info">
+                    <br>
+                    <h1>{{ full_name }}</h1>
+                    <p> Email: {{ email }}</p>
+                    <p>Phone: {{ phone_number }}</p>
+                    <p>Address: {{ address }}</p>
+                </div>
+                <div class="image-container">
+                    <img src="{{ image_url }}" alt="Profile Image">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Summary</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ summary }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Education</h2>
+            </div>
+            <div class="section-content">
+                <h3>{{ degree_earned }}</h3>
+                <p>{{ institution_name }}</p>
+                <p>Field of Study: {{ field_of_study }}</p>
+                <p>Year: {{ dates_of_attendance }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Work Experience</h2>
+            </div>
+            <div class="section-content">
+                <h3>{{ job_title }}</h3>
+                <p>{{ company_name }}</p>
+                <p>Date: {{ employment_dates }}</p>
+                <p>{{ responsibilities }}</p>
+                <p>{{ achievements }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Skills</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ skills }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Certifications</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ certifications }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Projects</h2>
+            </div>
+            <div class="section-content">
+                <h3>{{ project_name }}</h3>
+                <p>Purpose: {{ purpose }}</p>
+                <p>Role: {{ role }}</p>
+                <p>Technologies Used: {{ technologies_used }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Awards</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ awards }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Languages</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ languages }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>Interests</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ interests }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <h2>References</h2>
+            </div>
+            <div class="section-content">
+                <p>{{ references }}</p>
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+
+</html>

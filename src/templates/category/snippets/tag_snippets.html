@@ -1,0 +1,24 @@
+<section class="section bg-primary">
+	<div class="text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 mx-auto">
+                    {% if country %}
+					<h1 class="mb-5 pt-5 text-white">Tags #{{country}} </h1>
+                    {% else %}
+                    <h1 class="mb-5 pt-5 directory text-white">Tags</h1>
+					<ul class="widget-list-inline ">
+						{% for country_tag in country_lists %}
+                        {% if country_tag == country %}
+						<li class="list-inline-item"><a href=" /scholarship/tag/{{country}}" class="text-white">#{{ country }}</a></li>
+                        {% else %}
+						<li class="list-inline-item"><a href=" /scholarship/tag/{{country_tag}}" class="text-white">{{ country_tag }}</a></li>
+                        {% endif %}
+						{% endfor %}
+					</ul>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

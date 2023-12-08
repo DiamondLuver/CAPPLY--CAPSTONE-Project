@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 shadow pb-5 px-5 bg-white">
+        <div>{{message}}</div>
+        <!-- SCHOLARSHIP DETAIL -->
+        <div class="mt-5 mb-5 tag-detail">
+          <span class="text-primary"> {{object.deadline}} <span class="mx-2">/</span> </span>
+          <p class="list-inline-item ">
+            <span class="text-primary "><strong>Category </strong>:</span>
+            <a href="{% url 'scholarship' %}" class="ml-1">Scholarship</a>
+          </p>
+          <p class="list-inline-item">
+            <span class="text-primary "><strong>Tag </strong>:</span>
+            <a href="{{ object.more_info }}" class="ml-1"> More Info</a> ,
+            <a href="{{ object.link_web }}" class="ml-1 tag underline-doted"> Visit </a>,
+            <a href="{% url 'scholarship' %}/tag/{{object.country}}" class="ml-1">{{object.country}}</a>
+
+            {% if favorited %}
+            <a href="{% url 'favorite_delete' object.slug %}" class="ml-4 text-end"><i
+                class="fa fa-heart"></i>Favorited</a>
+            {% else %}
+            <a href="/add-to-favorite/{{object.slug}}" class="ml-1 text-end "><i class="fa fa-heart"></i>Add
+              Favorite</a>
+            {% endif %}
+
+
+
+
+          <h2 class="mb-4" style="line-height:1.5">{{object.school}}</h2>
+        </div>
+
+        <div class="content">
+          <h5 id="level">Level</h5>
+          <ul>
+            <li class="text-primary">{{object.level}}</li>
+          </ul>
+
+
+          <h5 id="country">Country</h5>
+          <ul>
+            <li class="text-primary">{{object.country}}</li>
+          </ul>
+
+
+
+
+          {% if object.deadline == None and object.description == null %}
+          <h5 id="deadline">Deadline & Description</h5>
+          <ul>
+            <li class="text-primary">Visit official website for details</li>
+          </ul>
+
+
+          {% elif object.deadline != None and object.description == null %}
+          <h5 id="paragraph">Deadline</h5>
+          <ul>
+            <li class="text-primary">{{object.deadline}}</li>
+          </ul>
+          <h5 id="paragraph">Description</h5>
+          <p>Visit official website for details</p>
+
+
+          {% else %}
+          <h5 id="deadline">Deadline</h5>
+          <ul>
+            <li class="text-primary">Visit official website for details</li>
+          </ul>
+          <h5 id="paragraph">Description</h5>
+          <p class="text-primary">{{object.description}}</p>
+          {% endif %}
+
+
+          <h5 id="link">Official Scholarship Website</h5>
+          <p><a href="{{object.link_web}}">{{object.link_web}}</a>
+
+
+            <!-- DISCLAIMER -->
+          <div class="notices info">
+            <p class="text-primary">This is NOT the official scholarship page. This is only a one-page summarized
+              listing of the scholarship. While we endeavor to keep the information up to date and correct, information
+              may change at any time without notice. For complete and updated information, please always refer to the
+              official website of the scholarship provider. Any reliance you place on information from Capply.com is
+              strictly at your own risk. Please read our Terms of Use for more information.</p>
+          </div>
+
+
+          <hr>
+
+
+        </div>
+        <!-- END OF SCHOLARSHIP DETAIL -->
+
+
+
+        <!-- COMMENT -->
+        <div class="col-md-12">
+          <div class="mb-3 mt-3 pt-5">
+            <h3 class="mb-4">Comments ({{comments | length}})</h3>
+            {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'create_comment' slug=object.slug %}">
+              {% csrf_token %}
+              <div class="d-flex align-items-end align-self-end">
+                <textarea name="content" autocomplete="off" placeholder="Post a comment..." class="form-control "
+                  id="id_content" style="min-height: 32px; height: 53.6px;"></textarea>
+                <button type="submit" class="btn btn-primary mb-0">Post</button>
+              </div>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Please login to comment & reply</a>
+            {% endif %}
+            {% for comment in comments %}
+            <div class="comment">
+              <div class="d-flex">
+                <div>
+                  <img src="{{comment.user.profile.profile_pic.url}}" class="rounded-circle img-fluid user-avatar"
+                    width="50px">
+                </div>
+                <div class="mx-3">
+                  <a href="" class="h5 bold ">@{{ comment.user.username }}</a>
+                  <small class="text-secondary ms-2 font-weight-200">{{ comment.created_on |timesince}} ago</small>
+                  <p class="text-primary ms-3">{{ comment.content }}</p>
+                  {% if request.user.is_authenticated %}
+                  <a href="#" class="toggle-link"><i class="fa fa-reply" aria-hidden="true"></i> &nbsp;Reply</a>
+                  {% endif %}
+                  {% if request.user == comment.user %}
+                  <a href="{% url 'delete_comment' object.slug %}"><i class="ms-3 fa fa-trash"
+                      aria-hidden="true"></i>&nbsp;Delete</a>
+                  {% endif %}
+                </div>
+              </div>
+              <!-- REPLY -->
+              <div class="m-5 ">
+                {% if comment.replies %}
+                <p class="text-primary h4 mb-3">Reply</p>
+                {% endif %}
+                {% for reply in comment.replies %}
+
+                <div class="d-flex">
+                  <div>
+                    <img src="{{reply.comment.user.profile.profile_pic.url}}"
+                      class="rounded-circle img-fluid user-avatar" width="50px">
+                  </div>
+                  <div class="mx-3">
+                    <a href="" class="h5 bold ">@{{ reply.user.username }}</a> <small
+                      class="text-secondary ms-2 font-weight-200">{{ reply.created_on|timesince }} ago</small>
+                    <p class="text-primary ms-3">{{ reply.content }}</p>
+                    {% if request.user == reply.user %}
+                    <a href="{% url 'delete_reply' reply.comment.id %}" class="delete-link"><i class="fa fa-trash ms-3"
+                        aria-hidden="true"></i>&nbsp;Delete</a>
+                    {% endif %}
+                  </div>
+                </div>
+                <hr class="text-secondary">
+                {% endfor %}
+                <div id="hidden-content" style="display: none;">
+                  {% if comment and request.user.is_authenticated %}
+                  <form method="post" action="{% url 'create_reply' comment.id %}">
+                    {% csrf_token %}
+                    <div class="d-flex align-items-end align-self-end">
+                      <textarea name="content" autocomplete="off" placeholder="Post a reply..." class="form-control "
+                        id="id_content" style="min-height: 30px; height: 53.6px;"></textarea>
+                      <button type="submit" class="btn btn-primary mb-0">Post</button>
+                    </div>
+                  </form>
+                  {% endif %}
+                </div>
+
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </div>
+</div>
+</div>
+<!-- JavaScript code -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toggleLink = document.querySelector(".toggle-link");
+    var hiddenDiv = document.querySelector("#hidden-content");
+
+    toggleLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (hiddenDiv.style.display === "none") {
+        hiddenDiv.style.display = "block";
+      } else {
+        hiddenDiv.style.display = "none";
+      }
+    });
+
+  });
+
+
+</script>
+
+{% endblock content %}

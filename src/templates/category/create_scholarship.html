@@ -1,0 +1,6 @@
+<form method="POST" action="{% url 'create_scholarship' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Scholarship</button>
+  </form>
+  

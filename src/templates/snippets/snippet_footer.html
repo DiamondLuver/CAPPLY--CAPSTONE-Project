@@ -1,0 +1,71 @@
+<!-- start of footer -->
+<footer class="bg-primary pb-5">
+    <div class="container bg-primary">
+        <div class="row justify-content-between mt-5 text-center text-md-start">
+            <div class="col-lg-4 mt-5">
+                <div class="footer-widget  text-lg-start text-md-center">
+                    <a href="{% url 'home' %}">
+                        {% load static %}
+                        <img loading="prelaod" decoding="async" class="img-fluid" width="160"
+                            src="{% static 'images/logo.svg' %}" alt="capply">
+                    </a>
+                    <hr>
+                    <h5 class="mb-4 text-white font-secondary">About Us</h5>
+                    <p>CAPPLY gathers scholarshipsoffers and list them all on our website. </p>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-5">
+                <div class="footer-widget text-center">
+                    <h5 class="mb-4 text-white font-secondary">Explore</h5>
+                    <ul class="">
+                        <li class="mb-2"><a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="mb-2"><a href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="mb-2"><a href="{% url 'scholarship' %}">Scholarship</a>
+                        </li>
+                        <li class="mb-2"><a href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-5 d-flex align-items-center flex-column bd-highlight ">
+                <div class="footer-widget text-lg-end text-md-center">
+                    <h5 class="text-white mb-3 font-secondary">Meet us on Social Media</h5>
+                    <ul class="list-unstyled list-inline social">
+                        <li class="list-inline-item me-3"><a title="Explorer Facebook Profile" class="text-black"
+                                href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item me-3"><a title="Explorer Twitter Profile" class="text-black"
+                                href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item me-3"><a title="Explorer Instagram Profile" class="text-black"
+                                href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li class="list-inline-item me-3"><a title="Explorer Instagram Profile" class="text-black"
+                                href="info@capply.com"><i class="fa fa-envelope"></i></a>
+                        </li>
+                    </ul>
+                    <div class="row text-right pt-3">
+                        <div class="col-lg-12">
+                            <div class="overflow-hidden">
+                                <!-- Copyright -->
+                                <p class="footer-copy">
+                                    Copyright &copy;
+                                    <script>var CurrentYear = new Date().getFullYear()
+                                        document.write(CurrentYear)
+                                    </script>. Designed &amp; Developed by <strong>CAPPLY</strong>
+                                </p>
+                                <p>Term and Condition | Privacy Policy</p>
+                            </div>
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+
+            </div>
+        </div>
+</footer>
+<!-- end of footer -->
+
+{% load static %}
+<script src="{% static 'js/script.js' %}" defer></script>

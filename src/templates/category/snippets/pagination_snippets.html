@@ -1,0 +1,27 @@
+<div class="pagination justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <!-- pagination 1 -->
+            {% if url != 'scholarship' %}
+                {% if scholarships.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo 1</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{scholarships.previous_page_number}}"><strong>
+                            < </strong></a></li>
+                {% endif %}
+                <li class="page-item active"><a class="page-link"
+                        href="?page={{scholarships.paginator.num_pages}}">{{scholarships.number}} </a></li>
+                {% if scholarships.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{scholarships.next_page_number}}"><strong>
+                            > </strong></a></li>
+                <li class="page-item"><a class="page-link"
+                        href="?page={{scholarships.paginator.num_pages}}">{{scholarships.paginator.num_pages}}
+                        &raquo</a></li>
+                {% endif %}
+
+            <!-- pagination 2 -->
+            {% else %}
+                
+            {% endif %}
+        </ul>
+    </nav>
+</div>

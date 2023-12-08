@@ -1,0 +1,18 @@
+<section id="filter" class="section-sm  bg-white ">
+	<div class="text-center">
+		<div class="container bg-white">
+			<div class="row">
+				<div class="col-lg-10 mx-auto">
+                    <h1 class="mb-5 pt-5 text-primary">Where Would You Like To Apply?</h1>
+					<ul class="widget-list-inline text-primary widget-homepage">
+						{% for country_tag in country_lists %}
+						<li class="list-inline-item text-primary" style="color:#1B3764"><a href=" /scholarship/tag/{{country_tag}}" >{{ country_tag }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<a class="btn btn-primary border-yellow mt-4" href="{% url 'scholarship' %}">Browse<span style="font-size: 14px;"
+				class="ms-2 fas fa-arrow-right"></span></a>
+		</div>
+	</div>
+</section>

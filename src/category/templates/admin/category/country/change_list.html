@@ -1,0 +1,15 @@
+<!-- your_app_name/templates/admin/your_app_name/yourmodel/change_list.html -->
+
+{% extends "admin/change_list.html" %}
+
+{% load i18n %}
+
+{% block object-tools-items %}
+    <li>
+        <a href="" onclick="document.getElementById('scrape-data-form').submit(); return false;" class="scrape-data-button">
+            {% trans "Get Data" %}
+        </a>
+        
+    </li>
+    {{ block.super }}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'profile_base.html' %}
+
+{% block content %}
+
+<body>
+  <section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-12 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <a href="{% url 'profile_edit' %}" class="mx-3 mt-3">
+              < Back </a>
+                <div class="card-body ">
+                  <br>
+
+                  <h3 class="text-center">Account delete confirmation</h3><br>
+                  {% if message %}
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="alert alert-danger contact__msg" role="alert">
+                        {{ message }}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  <form method="post" action="{% url 'user_delete_confirm' %}" class="mx-1 mx-md-4">
+                    {% csrf_token %}
+                    <p class="text-muted mb-3">Confirm password:<span class="mx-2"></p>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    <br><br>
+
+                    <button type="submit" class="btn btn-danger text-primary">Delete Account</button>
+
+                    <a href="{% url 'profile' %}" class="btn btn-primary">Cancel</a>
+                  </form>
+
+                  <br><br>
+
+                </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </section>
+</body>
+
+{% endblock content %}

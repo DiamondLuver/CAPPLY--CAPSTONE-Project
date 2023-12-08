@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    {% include 'snippets/snippet_css_all.html' %}
+</head>
+
+<body class="bg-light">
+
+    <!-- navigation -->
+    <header class="navigation fixed-top">
+        <nav class="navbar navbar-expand-xl navbar-light text-center py-3">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    {% load static %}
+                    <img loading="prelaod" decoding="async" class="img-fluid" width="160"
+                        src="{% static 'images/logo.svg' %}" alt="capply">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'scholarship' %}">Scholarship</a>
+                        </li>
+
+                        <li class="nav-item "> <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+
+                    </ul>
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                    <!-- account btn --> <a href="{% url 'admin:index' %}" class="btn btn-outline-primary">Dashboard</a>
+                    <!-- logout btn --> <a href="{% url 'logout' %}" class="btn btn-primary">Log out</a>
+                    {% else %}
+                    <!-- logout btn --> <a href="{% url 'logout' %}" class="btn btn-primary">Log out</a>
+                    {% endif %}
+                    {% else %}
+                    <!-- account btn --> <a href="{% url 'login' %}" class="btn btn-outline-primary">Log In</a>
+                    <!-- account btn --> <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- /navigation -->
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'snippets/snippet_footer.html' %}
+
+</body>
+
+</html>
